@@ -8,6 +8,7 @@ function MainFooter() {
         sx={{
           justifyContent: "center",
           display: "flex",
+          mt: "5rem",
         }}
       >
         <Typography
