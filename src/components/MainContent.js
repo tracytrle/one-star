@@ -1,6 +1,7 @@
 import React from "react";
 import { Stack, Grid, TextField } from "@mui/material";
 import TextFieldBase from "./TextFieldBase";
+import WelcomeMessage from "./WelcomeMessage";
 
 function MainContent() {
   return (
@@ -23,7 +24,7 @@ function MainContent() {
             alignItems: "center",
           }}
         >
-          <div>30% Width Content</div>
+          <WelcomeMessage />
         </Grid>
         <Grid
           item
@@ -37,7 +38,14 @@ function MainContent() {
         >
           <Stack sx={{ width: "100%", height: "100%" }}>
             <Grid container direction="column" sx={{ height: "100%" }}>
-              <Grid item sx={{ bgcolor: "lightblue", height: "100%" }}>
+              <Grid
+                item
+                sx={{
+                  bgcolor: "lightblue",
+                  height: "100%",
+                  overflow: "auto",
+                }}
+              >
                 <div>100% Height Content 1</div>
               </Grid>
               <Grid
