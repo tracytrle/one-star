@@ -1,7 +1,9 @@
 import React from "react";
-import { Stack, Grid, TextField } from "@mui/material";
+import { Stack, Grid } from "@mui/material";
 import TextFieldBase from "./TextFieldBase";
 import WelcomeMessage from "./WelcomeMessage";
+import SearchModel from "./SearchModel";
+import Model from "./Model";
 
 function MainContent() {
   return (
@@ -21,10 +23,20 @@ function MainContent() {
             bgcolor: "lightgray",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
-          <WelcomeMessage />
+          <Grid container direction="column" spacing={3} sx={{ width: "100%" }}>
+            <Grid item sx={{ mt: 2 }}>
+              <SearchModel />
+            </Grid>
+            <Grid item sx={{ mt: 1, ml: 2 }}>
+              <Model />
+            </Grid>
+            <Grid item>
+              <WelcomeMessage />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid
           item
