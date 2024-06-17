@@ -8,7 +8,7 @@ import MainContent from "../components/MainContent.js";
 
 function Homepage() {
   return (
-    <Stack>
+    <Stack data-testid="home-component">
       <Header />
 
       <Outlet />

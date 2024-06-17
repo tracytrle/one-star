@@ -16,6 +16,7 @@ const Item = styled(Button)(({ theme }) => ({
 function Model() {
   return (
     <Stack
+      data-testid="stack-component"
       sx={{
         width: "100%",
         height: "100%",
