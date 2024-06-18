@@ -2,6 +2,7 @@ import { Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import data from "../data/model.json";
 
 // import Paper from "@mui/material/Paper";
 const Item = styled(Button)(({ theme }) => ({
@@ -11,6 +12,10 @@ const Item = styled(Button)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
   width: "100%",
+  // "&.Mui-selected, &.Mui-focused": {
+  //   backgroundColor: theme.palette.third.main,
+  //   color: theme.palette.primary.contrastText,
+  // },
 }));
 
 function Model() {
@@ -27,18 +32,11 @@ function Model() {
       <Typography variant="h6">Text Classification</Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={6} md={8}>
-          <Item>xs=6 md=8</Item>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={6} md={8}>
-          <Item>xs=6 md=8</Item>
-        </Grid>
+        {data.model.map((item) => (
+          <Grid item key={item} xs={6} md={4}>
+            <Item>{item}</Item>
+          </Grid>
+        ))}
       </Grid>
     </Stack>
   );

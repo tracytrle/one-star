@@ -1,3 +1,4 @@
-// {
-//   "Text Classification": 
-// }
+{
+  "class": "Text Classification",
+  "model": ["roberta", "distilbert"]
+}
