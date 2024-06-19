@@ -4,6 +4,7 @@ import TextFieldBase from "./TextFieldBase";
 import WelcomeMessage from "./WelcomeMessage";
 import SearchModel from "./SearchModel";
 import Model from "./Model";
+import ResponsedData from "./ResponsedData";
 
 function MainContent() {
   return (
@@ -34,7 +35,7 @@ function MainContent() {
               <Model />
             </Grid>
             <Grid item>
-              <WelcomeMessage />
+              <WelcomeMessage searchText={""} />
             </Grid>
           </Grid>
         </Grid>
@@ -58,7 +59,7 @@ function MainContent() {
                   overflow: "auto",
                 }}
               >
-                <div>100% Height Content 1</div>
+                <ResponsedData />
               </Grid>
               <Grid
                 item
