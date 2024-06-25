@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 // import getResponse from "./getResponse";
 
 import DirectionsIcon from "@mui/icons-material/Directions";
+import { SetMealTwoTone } from "@mui/icons-material";
 
 export default function TextFieldBase() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,25 +15,17 @@ export default function TextFieldBase() {
   const handleChange = (event) => {
     console.log(event.target.value);
     setSearchTerm(event.target.value);
-    addMessage(event.target.value, "user");
+    // addMessage(event.target.value, "user");
   };
 
   const addMessage = (text, sender) => {
     setMessages((prevMessages) => [...prevMessages, { text, sender }]);
   };
 
-  // useEffect(() => {
-  //   console.log("messages:", messages);
-  //   // setMessages((prevMessages) => [...prevMessages, messages]);
-  //   getResponse(searchTerm).then((response) => {
-  //     addMessage(response, "bot");
-  //   });
-  // }, [searchTerm, messages]);
-
   useEffect(() => {
-    console.log("searchTerm:", searchTerm);
-    console.log("messages:", messages);
-  }, [searchTerm, messages]);
+    // console.log("messages:", messages);
+    addMessage(searchTerm, "user");
+  }, [searchTerm]);
 
   return (
     <Paper
