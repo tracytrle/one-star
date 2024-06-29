@@ -5,25 +5,19 @@ import Homepage from "./pages/HomePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import ErrorBoundary from "./ErrorBoundary";
 import { BrowserRouter } from "react-router-dom";
+import store from "./components/store";
+
+import { Provider } from "react-redux";
 
 function App() {
   const queryClient = new QueryClient();
   return (
-    // <ErrorBoundary>
-    //   <QueryClientProvider client={queryClient}>
-    //     <Router>
-    //       <ThemeProvider>
-    //         <Routes>
-    //           <Route path="/" element={<Homepage />} />
-    //         </Routes>
-    //       </ThemeProvider>
-    //     </Router>
-    //   </QueryClientProvider>
-    // </ErrorBoundary>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <Homepage />
+          <Provider store={store}>
+            <Homepage />
+          </Provider>
         </ThemeProvider>
       </QueryClientProvider>
     </BrowserRouter>

@@ -1,31 +1,33 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-// import getResponse from "./getResponse";
-
 import DirectionsIcon from "@mui/icons-material/Directions";
-import { SetMealTwoTone } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { addMessage, fetchBotResponse } from "./messagesSlice";
 
 export default function TextFieldBase() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [tempInput, setTempInput] = useState(""); // Temporary input state
+  const dispatch = useDispatch();
+
   const handleChange = (event) => {
-    console.log(event.target.value);
-    setSearchTerm(event.target.value);
-    // addMessage(event.target.value, "user");
+    setTempInput(event.target.value);
   };
 
-  const addMessage = (text, sender) => {
-    setMessages((prevMessages) => [...prevMessages, { text, sender }]);
-  };
+  const handleClick = (event) => {
+    event.preventDefault(); // Prevent form submission
 
-  useEffect(() => {
-    // console.log("messages:", messages);
-    addMessage(searchTerm, "user");
-  }, [searchTerm]);
+    if (tempInput) {
+      dispatch(addMessage({ text: tempInput, sender: "user" }));
+
+      setTempInput(""); // Optionally clear the input field after dispatching
+      setTimeout(() => {
+        dispatch(fetchBotResponse(tempInput));
+      }, 500);
+    }
+  };
 
   return (
     <Paper
@@ -39,15 +41,22 @@ export default function TextFieldBase() {
         height: "75px",
         bgcolor: "lightyellow",
       }}
+      onSubmit={handleClick} // Ensure form submission is handled by handleClick
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Message"
         inputProps={{ "aria-label": "Message" }}
+        value={tempInput}
         onChange={handleChange}
       />
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton color="third" sx={{ p: "10px" }} aria-label="directions">
+      <IconButton
+        color="third"
+        sx={{ p: "10px" }}
+        aria-label="directions"
+        onClick={handleClick}
+      >
         <DirectionsIcon />
       </IconButton>
     </Paper>

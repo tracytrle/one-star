@@ -1,10 +1,12 @@
 import React from "react";
 import { Stack, Grid } from "@mui/material";
 import TextFieldBase from "./TextFieldBase";
-import WelcomeMessage from "./WelcomeMessage";
+
 import SearchModel from "./SearchModel";
 import Model from "./Model";
 import ResponsedData from "./ResponsedData";
+
+import Display from "./Display";
 
 function MainContent() {
   return (
@@ -34,9 +36,6 @@ function MainContent() {
             <Grid item sx={{ mt: 1, ml: 2 }}>
               <Model />
             </Grid>
-            <Grid item>
-              <WelcomeMessage searchText={""} />
-            </Grid>
           </Grid>
         </Grid>
         <Grid
@@ -59,7 +58,8 @@ function MainContent() {
                   overflow: "auto",
                 }}
               >
-                <ResponsedData />
+                <Display />
+                {/* <ResponsedData /> */}
               </Grid>
               <Grid
                 item
