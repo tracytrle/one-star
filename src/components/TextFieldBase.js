@@ -20,12 +20,15 @@ export default function TextFieldBase() {
     event.preventDefault(); // Prevent form submission
 
     if (tempInput) {
+      const encodedInput = encodeURIComponent(tempInput);
+      setTempInput(encodedInput);
       dispatch(addMessage({ text: tempInput, sender: "user" }));
+      setTempInput(""); // Clear the input field after dispatching
 
-      setTempInput(""); // Optionally clear the input field after dispatching
+      // Introduce a delay before dispatching the bot response
       setTimeout(() => {
-        dispatch(fetchBotResponse(tempInput));
-      }, 500);
+        dispatch(fetchBotResponse(encodedInput));
+      }, 1000); // 1000 milliseconds = 1 second
     }
   };
 
