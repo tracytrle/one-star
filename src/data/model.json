@@ -1,4 +1,4 @@
 {
   "class": "Text Classification",
-  "model": ["roberta", "distilbert"]
+  "model": ["Model 1", "Model 2"]
 }

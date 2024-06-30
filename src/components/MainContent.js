@@ -1,12 +1,26 @@
 import React from "react";
 import { Stack, Grid } from "@mui/material";
 import TextFieldBase from "./TextFieldBase";
-
 import SearchModel from "./SearchModel";
-import Model from "./Model";
-import ResponsedData from "./ResponsedData";
-
 import Display from "./Display";
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+  },
+  displayContainer: {
+    flex: 1,
+  },
+  textFieldContainer: {
+    position: "sticky",
+    bottom: 0,
+    backgroundColor: "lightyellow",
+    zIndex: 1, // Ensure it stays on top
+    p: 1,
+  },
+};
 
 function MainContent() {
   return (
@@ -33,9 +47,6 @@ function MainContent() {
             <Grid item sx={{ mt: 2 }}>
               <SearchModel />
             </Grid>
-            <Grid item sx={{ mt: 1, ml: 2 }}>
-              <Model />
-            </Grid>
           </Grid>
         </Grid>
         <Grid
@@ -49,19 +60,21 @@ function MainContent() {
           }}
         >
           <Stack sx={{ width: "100%", height: "100%" }}>
-            <Grid container direction="column" sx={{ height: "100%" }}>
+            <Grid container direction="column" sx={{ height: "100%", mt: 2 }}>
               <Grid
+                style={styles.displayContainer}
                 item
                 sx={{
                   bgcolor: "lightblue",
-                  height: "100%",
-                  overflow: "auto",
+                  mr: 1,
+                  ml: 1,
+                  mb: 2,
                 }}
               >
                 <Display />
-                {/* <ResponsedData /> */}
               </Grid>
               <Grid
+                style={styles.textFieldContainer}
                 item
                 sx={{
                   bgcolor: "lightblue",
@@ -69,9 +82,9 @@ function MainContent() {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-end",
+                  mr: 2,
                 }}
               >
-                {/* <TextField placeholder="Message" /> */}
                 <TextFieldBase />
               </Grid>
             </Grid>
