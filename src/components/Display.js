@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Box, Stack } from "@mui/material";
 
 export default function Display() {
   const messages = useSelector((state) => state.messages);
+  const containerRef = useRef(null);
+  const bottomRef = useRef(null);
 
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
   return (
     <Box
+      ref={containerRef}
       sx={{
         height: "600px", // Fixed height for the container
         overflowY: "auto", // Enable vertical scrolling
@@ -31,6 +39,7 @@ export default function Display() {
             {msg.text}
           </div>
         ))}
+        <div ref={bottomRef} />
       </Stack>
     </Box>
   );
